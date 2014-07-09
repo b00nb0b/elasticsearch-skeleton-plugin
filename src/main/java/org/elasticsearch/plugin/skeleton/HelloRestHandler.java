@@ -33,41 +33,22 @@ public class HelloRestHandler extends BaseRestHandler {
     public HelloRestHandler(Settings settings, Client client, RestController restController) {
         super(settings, client);
         restController.registerHandler(GET, "/{index}/{type}/_hello", this);
+        restController.registerHandler(GET, "/{index}/_hello", this);
+        restController.registerHandler(GET, "/_hello", this);
     }
 
     @Override
     public void handleRequest(final RestRequest request, final RestChannel channel) throws Exception {
         String who = request.param("who");
         String whoSafe = (who!=null) ? who : "world";
-//        channel.sendResponse(new StringRestResponse(OK, "Hello, " + whoSafe + "!"));
-
-//        String[] indices = Strings.splitStringByCommaToArray(request.param("index"));
-//        SearchRequest searchRequest = new SearchRequest(indices);
-        SearchRequest searchRequest;
-        searchRequest = RestSearchAction.parseSearchRequest(request);
-        searchRequest.listenerThreaded(false);
-
-
-        SearchResponse searchResponse = null;
-
-        BytesReference test = searchRequest.extraSource();
-
-        ActionFuture<SearchResponse> searchFuture = client.search(searchRequest);
-        searchResponse = searchFuture.get();
-
-
-//        client.search(searchRequest, new RestStatusToXContentListener<SearchResponse>(channel));
 
 
         XContentBuilder doc = null;
 
         doc = jsonBuilder()
                 .startObject()
-                .field("Hello, ", whoSafe)
-                .field("Index", request.param("index"))
-                .field("results", searchResponse)
+                .field("Hello ", whoSafe)
                 .endObject();
-
 
         channel.sendResponse(new BytesRestResponse(RestStatus.OK, doc));
 

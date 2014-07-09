@@ -29,7 +29,7 @@ public class SkeletonPlugin extends AbstractPlugin {
     @Override
     public Collection<Class<? extends Module>> modules() {
         Collection<Class<? extends Module>> modules = Lists.newArrayList();
-        modules.add(ExampleRestModule.class);
+        modules.add(HelloWorldRestModule.class);
         return modules;
     }
 
