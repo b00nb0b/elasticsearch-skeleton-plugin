@@ -1,4 +1,4 @@
-package org.elasticsearch.plugin.visits;
+package org.elasticsearch.plugin.skeleton;
 
 
 

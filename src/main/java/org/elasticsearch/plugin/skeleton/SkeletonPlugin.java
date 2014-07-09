@@ -1,4 +1,4 @@
-package org.elasticsearch.plugin.visits;
+package org.elasticsearch.plugin.skeleton;
 
 import org.elasticsearch.common.collect.Lists;
 import org.elasticsearch.common.inject.Inject;
@@ -10,20 +10,20 @@ import java.util.Collection;
 /**
  *
  */
-public class VisitsPlugin extends AbstractPlugin {
+public class SkeletonPlugin extends AbstractPlugin {
 
     @Inject
-    public VisitsPlugin() {
+    public SkeletonPlugin() {
     }
 
     @Override
     public String name() {
-        return "visits-plugin";
+        return "elasticsearch-skeleton-plugin";
     }
 
     @Override
     public String description() {
-        return "Elasticsearch Visits Plugin";
+        return "Elasticsearch Skeleton Plugin";
     }
 
     @Override
